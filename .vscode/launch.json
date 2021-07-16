@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "native_scroll",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "native_scroll (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "native_scroll_example",
+            "cwd": "example/native_scroll_example",
+            "request": "launch",
+            "type": "dart"
+            // "args": [
+            //     "--web-renderer", "html"
+            // ]
+        },
+        {
+            "name": "native_scroll_example (profile mode)",
+            "cwd": "example/native_scroll_example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}
