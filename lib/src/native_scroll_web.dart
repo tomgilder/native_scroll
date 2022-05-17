@@ -57,7 +57,7 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
 
     _scrollController.addListener(_onFlutterScroll);
 
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _setScrollHeight();
 
       _scrollController.position.addListener(() {
