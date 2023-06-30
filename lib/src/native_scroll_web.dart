@@ -50,6 +50,7 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
           ..onScroll.listen((event) {
             final target = event.target as DivElement;
             _onNativeScroll(target.scrollTop);
+            event.stopPropagation();
           })
           ..append(_heightDiv);
       },
@@ -104,11 +105,11 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        HtmlElementView(viewType: _viewId),
         ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: widget.builder(context, _scrollController),
         ),
-        HtmlElementView(viewType: _viewId),
       ],
     );
   }
