@@ -6,8 +6,10 @@ class NativeScrollBuilder extends StatefulWidget {
 
   const NativeScrollBuilder({
     Key? key,
+    this.controller,
     required this.builder,
   }) : super(key: key);
+  ScrollController? controller;
 
   @override
   _NativeScrollBuilderState createState() => _NativeScrollBuilderState();
@@ -19,12 +21,18 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+    if (widget.controller != null) {
+      _scrollController = widget.controller!;
+    } else {
+      _scrollController = ScrollController();
+    }
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    if (widget.controller == null) {
+      _scrollController.dispose();
+    }
     super.dispose();
   }
 
