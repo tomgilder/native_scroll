@@ -9,9 +9,11 @@ import 'dart:ui' as ui;
 class NativeScrollBuilder extends StatefulWidget {
   final Widget Function(BuildContext context, ScrollController controller)
       builder;
+  final ScrollController? controller;
 
   const NativeScrollBuilder({
     Key? key,
+    this.controller,
     required this.builder,
   }) : super(key: key);
 
@@ -30,7 +32,11 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+    if (widget.controller != null) {
+      _scrollController = widget.controller!;
+    } else {
+      _scrollController = ScrollController();
+    }
     _globalId++;
     _viewId = 'native-scroll-view-$_globalId';
 
@@ -96,7 +102,9 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    if (widget.controller == null) {
+      _scrollController.dispose();
+    }
     super.dispose();
   }
 
